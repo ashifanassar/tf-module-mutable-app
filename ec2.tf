@@ -10,8 +10,6 @@ resource "aws_spot_instance_request" "spot" {
 
 }
 
-
-
 #Create the ondemand instance
 
 
@@ -19,7 +17,8 @@ resource "aws_instance" "od" {
   count                     = var.OD_INSTANCE_COUNT
   ami                       = data.aws_ami.ami.id
   instance_type             = var.OD_INSTANCE_TYPE
-  subnet_id                 = var.INTERNAL ? element(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS, count.index) : element(data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNET_IDS, count.index)  vpc_security_group_ids    = [aws_security_group.allow_app.id]
+  subnet_id                 = var.INTERNAL ? element(data.terraform_remote_state.vpc.outputs.PRIVATE_SUBNET_IDS, count.index) : element(data.terraform_remote_state.vpc.outputs.PUBLIC_SUBNET_IDS, count.index)  
+  vpc_security_group_ids    = [aws_security_group.allow_app.id]
   iam_instance_profile      = "DevopsRole"
 }
 
