@@ -15,7 +15,7 @@ resource "aws_spot_instance_request" "spot" {
 #Create the ondemand instance
 
 
-resource "aws_spot_instance_request" "od" {
+resource "aws_instance" "od" {
   count                     = var.OD_INSTANCE_COUNT
   ami                       = data.aws_ami.ami.id
   instance_type             = var.OD_INSTANCE_TYPE
