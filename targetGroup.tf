@@ -1,3 +1,8 @@
+locals {
+  INSTANCE_COUNT = var.OD_INSTANCE_COUNT + var.SPOT_INSTANCE_COUNT
+}
+
+
 resource "aws_lb_target_group" "app" {
   name     = "${var.COMPONENT}-${var.ENV}-tg"
   port     = var.APP_PORT

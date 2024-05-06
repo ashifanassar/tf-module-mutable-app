@@ -25,3 +25,7 @@ variable "APP_PORT" {
 variable "OD_INSTANCE_TYPE" {
   
 }
+
+variable "OD_INSTANCE_COUNT" {
+  
+}
