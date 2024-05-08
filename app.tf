@@ -5,6 +5,9 @@ resource "null_resource" "app_deploy" {
   # generic remote provisioners (i.e. file/remote-exec)
 
   count = local.INSTANCE_COUNT
+  triggers = {
+    always_run = timestamp()
+  }
   connection {
     type     = "ssh"
     user     = "centos"
