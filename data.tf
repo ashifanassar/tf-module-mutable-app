@@ -16,3 +16,12 @@ data "aws_ami" "ami" {
   owners           = ["590183768065"]
 
 }
+
+data "terraform_remote_state" "alb" {
+  backend = "s3"
+  config = {
+    bucket = "terraformbasicdevopsstatebucket"
+    key    = "dev/alb/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
