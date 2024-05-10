@@ -17,7 +17,7 @@ resource "null_resource" "app_deploy" {
 
   provisioner "remote-exec" {
     inline = [
-      "ansible-pull -U https://github.com/ashifanassar/ansible.git -e ENV=dev -e COMPONENT=${var.COMPONENT} -e DOCDB_ENDPOINT=${data.terraform_remote_state.db.outputs.DOCDB_ENDPOINT} -e REDIS_ENDPOINT=${data.terraform_remote_state.db.outputs.REDIS_ENDPOINT}-e APP_VERSION=${var.APP_VERSION} roboshop-pull.yml"
+      "ansible-pull -U https://github.com/ashifanassar/ansible.git -e ENV=dev -e COMPONENT=${var.COMPONENT} -e DOCDB_ENDPOINT=${data.terraform_remote_state.db.outputs.DOCDB_ENDPOINT} -e REDIS_ENDPOINT=${data.terraform_remote_state.db.outputs.REDIS_ENDPOINT} -e APP_VERSION=${var.APP_VERSION} roboshop-pull.yml"
     ]
   }
 }
