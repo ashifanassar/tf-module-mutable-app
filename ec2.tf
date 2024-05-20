@@ -29,3 +29,12 @@ resource "aws_ec2_tag" "app_tags" {
   key         = "Name"
   value       = "roboshop-${var.ENV}-${var.COMPONENT}"
 }
+
+# Prometheus Monitoring Tag
+resource "aws_ec2_tag" "monitor_tags" {
+  count       = local.INSTANCE_COUNT
+   
+  resource_id = element(local.INSTANCE_IDS, count.index)
+  key         = "monitor"
+  value       = "yes"
+}
